@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="admin-header">
+    <text class="admin-title">🔧 官员后台</text>
+    <text class="admin-sub">EOE 中文演讲俱乐部</text>
+  </view>
+
+  <!-- Quick Actions -->
+  <view class="action-grid">
+    <view class="action-card" bindtap="onCreateMeeting">
+      <text class="action-icon">➕</text>
+      <text class="action-name">创建例会</text>
+    </view>
+    <view class="action-card" bindtap="onVoteManage">
+      <text class="action-icon">🗳️</text>
+      <text class="action-name">投票管理</text>
+    </view>
+    <view class="action-card" bindtap="onMemberManage">
+      <text class="action-icon">👥</text>
+      <text class="action-name">成员管理</text>
+    </view>
+  </view>
+
+  <!-- Meeting List -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">例会管理</text>
+    </view>
+    <view class="meeting-list">
+      <view 
+        class="meeting-item"
+        wx:for="{{meetings}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="onMeetingTap"
+      >
+        <view class="meeting-info">
+          <text class="meeting-theme">{{item.theme}}</text>
+          <text class="meeting-date">{{item.date}}</text>
+        </view>
+        <view class="meeting-status {{item.status}}">
+          {{item.status === 'preparing' ? '筹备中' : '已结束'}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

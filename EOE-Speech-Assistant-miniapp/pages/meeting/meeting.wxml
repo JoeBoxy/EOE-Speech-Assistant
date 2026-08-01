@@ -1,0 +1,105 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="loading-tip">
+    <text>加载例会中...</text>
+  </view>
+  
+  <view wx:if="{{!loading && !currentMeeting}}" class="empty-tip">
+    <text>暂无常备例会</text>
+  </view>
+
+  <!-- 本期例会卡片 -->
+  <view class="meeting-card" wx:if="{{currentMeeting}}">
+    <view class="meeting-header">
+      <view class="meeting-theme">{{currentMeeting.theme}}</view>
+      <view class="meeting-form tag tag-primary">{{currentMeeting.form}}</view>
+    </view>
+    
+    <view class="meeting-info">
+      <view class="info-item">
+        <text class="info-icon">📅</text>
+        <text class="info-text">{{currentMeeting.date}} {{currentMeeting.time}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-icon">📍</text>
+        <text class="info-text">{{currentMeeting.location}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-icon">👤</text>
+        <text class="info-text">会议经理：{{currentMeeting.manager.name}}</text>
+      </view>
+    </view>
+
+    <!-- 快捷操作 -->
+    <view class="quick-actions">
+      <view class="action-btn" bindtap="onVoteTap">
+        <text class="action-icon">🗳️</text>
+        <text class="action-label">投票</text>
+      </view>
+      <view class="action-btn" bindtap="onTimerTap">
+        <text class="action-icon">⏱️</text>
+        <text class="action-label">计时</text>
+      </view>
+      <view class="action-btn" bindtap="onHostConsoleTap">
+        <text class="action-icon">🎛️</text>
+        <text class="action-label">控制台</text>
+      </view>
+      <view class="action-btn" bindtap="onMinutesTap">
+        <text class="action-icon">📝</text>
+        <text class="action-label">纪要</text>
+      </view>
+      <view class="action-btn" bindtap="onHistoryTap">
+        <text class="action-icon">📚</text>
+        <text class="action-label">历史</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 角色报名 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">角色报名</text>
+      <text class="section-sub">点击空白格子报名</text>
+    </view>
+
+    <view class="role-grid">
+      <view class="role-row" wx:for="{{roleGrid}}" wx:for-index="rowIdx" wx:key="rowIdx">
+        <view 
+          class="role-cell {{item.data ? 'occupied' : 'empty'}} {{item.key === 'tableTopics' ? 'table-topics' : ''}}"
+          wx:for="{{item}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          data-label="{{item.label}}"
+          bindtap="onRoleTap"
+        >
+          <text class="role-label">{{item.label}}</text>
+          <block wx:if="{{item.data}}">
+            <view class="role-avatar">
+              <text>{{item.data.name[0]}}</text>
+            </view>
+            <text class="role-name">{{item.data.name}}</text>
+            <text class="role-title" wx:if="{{item.data.title}}">{{item.data.title}}</text>
+          </block>
+          <block wx:else>
+            <text class="role-status">待报名</text>
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <!-- 即兴演讲区 -->
+    <view class="table-topics-area">
+      <view class="tt-header">
+        <text class="tt-title">🎤 即兴演讲</text>
+        <text class="tt-count">{{currentMeeting.roles.tableTopics.length}} 人报名</text>
+      </view>
+      <view class="tt-list">
+        <view class="tt-item" wx:for="{{currentMeeting.roles.tableTopics}}" wx:key="userId">
+          <view class="tt-avatar">{{item.name[0]}}</view>
+          <text class="tt-name">{{item.name}}</text>
+          <text class="tt-tag" wx:if="{{item.isGuest}}">嘉宾</text>
+        </view>
+      </view>
+      <button class="btn btn-primary btn-sm" bindtap="onTableTopicsTap">报名即兴演讲</button>
+    </view>
+  </view>
+</view>

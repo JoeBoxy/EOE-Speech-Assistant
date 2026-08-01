@@ -1,0 +1,63 @@
+<view class="container">
+  <!-- Speaker Selector -->
+  <view class="speaker-selector">
+    <view class="selector-title">选择演讲者</view>
+    <scroll-view class="speaker-list" scroll-x>
+      <view 
+        class="speaker-chip {{currentSpeaker && currentSpeaker.id === item.id ? 'active' : ''}}"
+        wx:for="{{speakers}}"
+        wx:key="id"
+        data-speaker="{{item}}"
+        bindtap="onSelectSpeaker"
+      >
+        <text class="chip-name">{{item.name}}</text>
+        <text class="chip-title">{{item.title}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- Timer Display -->
+  <view class="timer-display {{getTimeStatus()}}" wx:if="{{currentSpeaker}}">
+    <view class="timer-speaker">{{currentSpeaker.name}} {{currentSpeaker.title}}</view>
+    <view class="timer-time">{{formatTime(elapsed)}}</view>
+    <view class="timer-target">
+      目标：{{currentSpeaker.targetMin}}-{{currentSpeaker.targetMax}} 分钟
+    </view>
+    <view class="timer-zones">
+      <view class="zone zone-green {{elapsed >= currentSpeaker.targetMin*60 ? 'dim' : ''}}">🟢</view>
+      <view class="zone zone-yellow {{elapsed >= currentSpeaker.targetMax*60 ? 'dim' : ''}}">🟡</view>
+      <view class="zone zone-red {{elapsed >= (currentSpeaker.targetMax+0.5)*60 ? 'dim' : ''}}">🔴</view>
+    </view>
+  </view>
+
+  <view class="timer-placeholder" wx:else>
+    <text class="placeholder-text">请选择演讲者开始计时</text>
+  </view>
+
+  <!-- Controls -->
+  <view class="timer-controls">
+    <button class="btn btn-primary {{!currentSpeaker ? 'disabled' : ''}}" bindtap="onStart" wx:if="{{!isRunning}}">
+      开始
+    </button>
+    <button class="btn btn-outline" bindtap="onPause" wx:if="{{isRunning}}">
+      暂停
+    </button>
+    <button class="btn btn-danger" bindtap="onEnd" wx:if="{{elapsed > 0}}">
+      结束
+    </button>
+  </view>
+
+  <!-- Records -->
+  <view class="records-section" wx:if="{{records.length > 0}}">
+    <view class="records-title">时间记录</view>
+    <view class="record-item" wx:for="{{records}}" wx:key="index">
+      <view class="record-info">
+        <text class="record-name">{{item.name}}</text>
+        <text class="record-title">{{item.title}}</text>
+      </view>
+      <view class="record-duration {{item.isOvertime ? 'overtime' : ''}}">
+        {{formatTime(item.duration)}}
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,57 @@
+<view class="container">
+  <!-- Hidden canvas for drawing -->
+  <canvas type="2d" id="posterCanvas" style="width: 750px; height: 1200px; position: fixed; left: -9999px; top: -9999px;"></canvas>
+  
+  <!-- Preview -->
+  <view class="poster-preview" wx:if="{{posterUrl}}">
+    <image class="poster-img" src="{{posterUrl}}" mode="widthFix" />
+  </view>
+  
+  <!-- Fallback text preview -->
+  <view class="poster" wx:if="{{!posterUrl}}">
+    <view class="poster-header">
+      <view class="poster-club">{{meeting.clubName}}</view>
+      <view class="poster-number">{{meeting.number}}</view>
+    </view>
+    
+    <view class="poster-theme">
+      <text class="theme-label">本期主题</text>
+      <text class="theme-text">{{meeting.theme}}</text>
+    </view>
+
+    <view class="poster-date">{{meeting.date}}</view>
+
+    <view class="winners">
+      <view class="winner-item">
+        <text class="winner-icon">🏆</text>
+        <text class="winner-label">最佳演讲</text>
+        <text class="winner-name">{{meeting.winners.bestSpeaker.name}}</text>
+        <text class="winner-title">{{meeting.winners.bestSpeaker.title}}</text>
+      </view>
+      <view class="winner-item">
+        <text class="winner-icon">🏆</text>
+        <text class="winner-label">最佳点评</text>
+        <text class="winner-name">{{meeting.winners.bestEvaluator.name}}</text>
+      </view>
+      <view class="winner-item">
+        <text class="winner-icon">🏆</text>
+        <text class="winner-label">最佳即兴</text>
+        <text class="winner-name">{{meeting.winners.bestTableTopics.name}}</text>
+      </view>
+    </view>
+
+    <view class="poster-footer">
+      <text>扫码报名下期例会 →</text>
+    </view>
+  </view>
+
+  <!-- Actions -->
+  <view class="action-bar">
+    <button class="btn btn-primary" bindtap="onSavePoster">
+      <text>💾 保存海报</text>
+    </button>
+    <button class="btn btn-secondary" bindtap="onShareToMoments">
+      <text>📤 分享朋友圈</text>
+    </button>
+  </view>
+</view>

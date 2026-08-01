@@ -1,0 +1,8 @@
+.DS_Store
+.tmpvenv/
+
+# Local backend data
+EOE-Speech-Assistant-backend/instance/*.db
+
+# WeChat Developer Tools personal settings
+EOE-Speech-Assistant-miniapp/project.private.config.json

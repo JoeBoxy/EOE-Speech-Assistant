@@ -1,0 +1,134 @@
+/* Claude Warm Theme - Minutes Page */
+
+.container {
+  background-color: var(--parchment);
+}
+
+.poster {
+  background: var(--deep-dark);
+  border-radius: 32rpx;
+  padding: 48rpx;
+  margin: 32rpx;
+  color: var(--ivory);
+  position: relative;
+  overflow: hidden;
+  border: 1rpx solid var(--border-dark);
+}
+
+.poster::before {
+  content: '';
+  position: absolute;
+  top: -100rpx;
+  right: -100rpx;
+  width: 300rpx;
+  height: 300rpx;
+  background: var(--terracotta);
+  border-radius: 50%;
+  opacity: 0.08;
+}
+
+.poster-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32rpx;
+  position: relative;
+}
+
+.poster-club {
+  font-size: 26rpx;
+  color: var(--warm-silver);
+}
+
+.poster-number {
+  font-size: 22rpx;
+  background: var(--dark-surface);
+  padding: 8rpx 20rpx;
+  border-radius: 12rpx;
+  color: var(--warm-silver);
+  border: 1rpx solid var(--border-dark);
+}
+
+.poster-theme {
+  margin-bottom: 24rpx;
+  position: relative;
+}
+
+.theme-label {
+  font-size: 22rpx;
+  color: var(--warm-silver);
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.theme-text {
+  font-family: Georgia, serif;
+  font-size: 44rpx;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ivory);
+}
+
+.poster-date {
+  font-size: 26rpx;
+  color: var(--warm-silver);
+  margin-bottom: 40rpx;
+}
+
+.winners {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.winner-item {
+  display: flex;
+  align-items: center;
+  background: var(--dark-surface);
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  border: 1rpx solid var(--border-dark);
+}
+
+.winner-icon {
+  font-size: 36rpx;
+  margin-right: 16rpx;
+}
+
+.winner-label {
+  font-size: 22rpx;
+  color: var(--warm-silver);
+  margin-right: 16rpx;
+  min-width: 120rpx;
+}
+
+.winner-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-right: 12rpx;
+  color: var(--ivory);
+}
+
+.winner-title {
+  font-size: 22rpx;
+  color: var(--warm-silver);
+}
+
+.poster-footer {
+  text-align: center;
+  font-size: 24rpx;
+  color: var(--warm-silver);
+  padding-top: 24rpx;
+  border-top: 1rpx solid var(--border-dark);
+}
+
+.action-bar {
+  display: flex;
+  gap: 24rpx;
+  padding: 0 32rpx 48rpx;
+}
+
+.action-bar .btn {
+  flex: 1;
+}

@@ -1,0 +1,46 @@
+# ===========================================
+# EOE演讲线上助手 Backend 配置文件
+# 使用 Dynaconf 管理，支持多环境配置
+# ===========================================
+
+# 默认配置 (所有环境继承)
+[default]
+app_name = "EOE演讲线上助手 Backend"
+debug = false
+
+# JWT 配置
+jwt_algorithm = "HS256"
+jwt_expire_days = 7
+
+# 数据库配置
+# 本地开发使用 SQLite，线上使用 MySQL
+database_url = "sqlite:///./data/eoe.db"
+
+# 微信配置 (建议在 .secrets.toml 或环境变量中设置)
+wechat_appid = ""
+wechat_secret = ""
+
+
+# ===========================================
+# 开发环境配置
+# ===========================================
+[development]
+debug = true
+database_url = "sqlite:///./data/eoe_dev.db"
+
+
+# ===========================================
+# 测试环境配置
+# ===========================================
+[testing]
+debug = true
+database_url = "sqlite:///./data/eoe_test.db"
+
+
+# ===========================================
+# 生产环境配置
+# ===========================================
+[production]
+debug = false
+# 生产环境应该在 .secrets.toml 或环境变量中设置 database_url
+# database_url = "mysql+aiomysql://user:pass@host:3306/eoe"

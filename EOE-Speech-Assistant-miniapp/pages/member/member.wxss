@@ -1,0 +1,85 @@
+/* Claude Warm Theme - Member List */
+
+.container {
+  background-color: var(--parchment);
+}
+
+.member-list {
+  padding: 24rpx 32rpx;
+}
+
+.member-card {
+  display: flex;
+  align-items: center;
+  background: var(--ivory);
+  border-radius: 24rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  border: 1rpx solid var(--border-cream);
+  box-shadow: rgba(0,0,0,0.02) 0rpx 2rpx 8rpx;
+}
+
+.member-avatar {
+  width: 88rpx;
+  height: 88rpx;
+  background: var(--warm-sand);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--charcoal);
+  font-family: Georgia, serif;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.member-info {
+  flex: 1;
+}
+
+.member-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.member-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--near-black);
+}
+
+.member-en {
+  font-size: 24rpx;
+  color: var(--stone-gray);
+}
+
+.member-meta {
+  display: flex;
+  gap: 12rpx;
+}
+
+.member-stats {
+  display: flex;
+  gap: 24rpx;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  font-family: Georgia, serif;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: var(--terracotta);
+  display: block;
+}
+
+.stat-label {
+  font-size: 20rpx;
+  color: var(--stone-gray);
+}

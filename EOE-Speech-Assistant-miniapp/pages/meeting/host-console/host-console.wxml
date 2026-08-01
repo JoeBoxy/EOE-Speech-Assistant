@@ -1,0 +1,67 @@
+<view class="container">
+  <!-- Header Stats -->
+  <view class="stats-bar">
+    <view class="stat-box">
+      <text class="stat-value">{{formatTime(totalElapsed)}}</text>
+      <text class="stat-label">已用时间</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-box">
+      <text class="stat-value">{{formatTime(totalPlanned * 60 - totalElapsed)}}</text>
+      <text class="stat-label">剩余时间</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-box">
+      <text class="stat-value">{{completedCount}}/{{agenda.length}}</text>
+      <text class="stat-label">完成环节</text>
+    </view>
+  </view>
+
+  <!-- Current Timer Display -->
+  <view class="timer-panel" wx:if="{{currentIndex >= 0}}">
+    <view class="timer-label">当前环节</view>
+    <view class="timer-name">{{agenda[currentIndex].label}}</view>
+    <view class="timer-display" style="color: {{getProgressColor(elapsed, agenda[currentIndex].duration)}}">
+      {{formatTime(elapsed)}}
+    </view>
+    <view class="timer-target">计划：{{agenda[currentIndex].duration}} 分钟</view>
+    <view class="timer-bar">
+      <view class="timer-bar-fill" style="width: {{Math.min(elapsed / (agenda[currentIndex].duration * 60) * 100, 100)}}%; background: {{getProgressColor(elapsed, agenda[currentIndex].duration)}}"></view>
+    </view>
+    <view class="timer-actions">
+      <button class="btn btn-sm {{isRunning ? 'btn-secondary' : 'btn-primary'}}" bindtap="onAgendaTap" data-index="{{currentIndex}}">
+        {{isRunning ? '⏸ 暂停' : '▶ 继续'}}
+      </button>
+      <button class="btn btn-sm btn-primary" bindtap="onCompleteTap">✓ 完成并下一项</button>
+    </view>
+  </view>
+
+  <!-- Agenda List -->
+  <view class="agenda-section">
+    <view class="agenda-header">
+      <text class="section-title">会议议程</text>
+      <button class="btn btn-sm btn-secondary" bindtap="onResetTap">↺ 重置</button>
+    </view>
+    
+    <view class="agenda-list">
+      <view 
+        class="agenda-item {{index === currentIndex ? 'active' : ''}} {{item.completed ? 'completed' : ''}}"
+        wx:for="{{agenda}}"
+        wx:key="id"
+        data-index="{{index}}"
+        bindtap="onAgendaTap"
+      >
+        <view class="agenda-index">{{index + 1}}</view>
+        <view class="agenda-info">
+          <text class="agenda-label">{{item.label}}</text>
+          <text class="agenda-speaker" wx:if="{{item.speaker}}">{{item.speaker}}</text>
+        </view>
+        <view class="agenda-meta">
+          <text class="agenda-duration">{{item.duration}}min</text>
+          <text class="agenda-status" wx:if="{{item.completed}}">✓</text>
+          <text class="agenda-status pending" wx:elif="{{index === currentIndex && isRunning}}">▶</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

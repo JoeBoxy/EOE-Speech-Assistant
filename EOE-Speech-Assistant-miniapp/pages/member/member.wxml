@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="member-list">
+    <view 
+      class="member-card"
+      wx:for="{{members}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="onMemberTap"
+    >
+      <view class="member-avatar">{{item.name[0]}}</view>
+      <view class="member-info">
+        <view class="member-name-row">
+          <text class="member-name">{{item.name}}</text>
+          <text class="member-en" wx:if="{{item.englishName}}">{{item.englishName}}</text>
+        </view>
+        <view class="member-meta">
+          <text class="tag tag-primary" wx:if="{{item.officerRole}}">{{item.officerRole}}</text>
+          <text class="tag tag-secondary">{{item.role}}</text>
+        </view>
+      </view>
+      <view class="member-stats">
+        <view class="stat">
+          <text class="stat-num">{{item.speeches}}</text>
+          <text class="stat-label">演讲</text>
+        </view>
+        <view class="stat">
+          <text class="stat-num">{{item.best}}</text>
+          <text class="stat-label">最佳</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
