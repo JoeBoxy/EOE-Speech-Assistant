@@ -1,0 +1,266 @@
+page {
+  background: #f5f4ed;
+}
+
+.time-card-page,
+.picker-view {
+  min-height: 100vh;
+}
+
+.picker-view {
+  background: #f5f4ed;
+}
+
+.custom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  padding: env(safe-area-inset-top) 24rpx 0;
+  background: #141413;
+  color: #ffffff;
+  box-sizing: content-box;
+}
+
+.nav-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.back-icon {
+  font-size: 64rpx;
+  font-weight: 300;
+  line-height: 1;
+  transform: translateY(-4rpx);
+}
+
+.nav-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+}
+
+.content {
+  padding: 48rpx 40rpx calc(48rpx + env(safe-area-inset-bottom));
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32rpx;
+}
+
+.eyebrow {
+  margin-bottom: 12rpx;
+  color: #c96442;
+  font-size: 22rpx;
+  font-weight: 700;
+  letter-spacing: 5rpx;
+}
+
+.page-title {
+  color: #141413;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 56rpx;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.page-description {
+  margin-top: 14rpx;
+  color: #5e5d59;
+  font-size: 27rpx;
+}
+
+.timer-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 128rpx;
+  margin-bottom: 32rpx;
+  padding: 20rpx 24rpx 20rpx 30rpx;
+  border: 1rpx solid #e8e6dc;
+  border-radius: 24rpx;
+  background: #faf9f5;
+}
+
+.timer-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.timer-caption {
+  color: #87867f;
+  font-size: 21rpx;
+  letter-spacing: 2rpx;
+}
+
+.timer-value {
+  color: #141413;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  font-size: 48rpx;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 2rpx;
+}
+
+.timer-actions {
+  display: flex;
+  gap: 12rpx;
+}
+
+.timer-button {
+  min-width: 92rpx;
+  padding: 13rpx 20rpx;
+  border-radius: 999rpx;
+  background: #141413;
+  color: #ffffff;
+  font-size: 23rpx;
+  text-align: center;
+}
+
+.timer-button-secondary {
+  border: 1rpx solid #d1cfc5;
+  background: transparent;
+  color: #5e5d59;
+}
+
+.color-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.color-card {
+  display: flex;
+  align-items: center;
+  min-height: 156rpx;
+  padding: 0 40rpx;
+  border-radius: 28rpx;
+  color: #ffffff;
+  box-shadow: 0 10rpx 30rpx rgba(20, 20, 19, 0.12);
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+
+.color-card-green {
+  background: #16a34a;
+}
+
+.color-card-yellow {
+  background: #facc15;
+  color: #28230a;
+}
+
+.color-card-red {
+  background: #dc2626;
+}
+
+.color-card-active {
+  opacity: 0.88;
+  transform: scale(0.985);
+}
+
+.color-dot {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 24rpx;
+  border: 5rpx solid currentColor;
+  border-radius: 50%;
+  opacity: 0.82;
+}
+
+.color-label {
+  flex: 1;
+  font-size: 42rpx;
+  font-weight: 700;
+  letter-spacing: 4rpx;
+}
+
+.color-arrow {
+  font-size: 60rpx;
+  font-weight: 300;
+  opacity: 0.82;
+}
+
+.picker-hint {
+  display: block;
+  margin-top: 32rpx;
+  color: #87867f;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.color-screen {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.color-screen-green {
+  background: #16a34a;
+}
+
+.color-screen-yellow {
+  background: #facc15;
+  color: #28230a;
+}
+
+.color-screen-red {
+  background: #dc2626;
+}
+
+.screen-footer {
+  position: absolute;
+  bottom: calc(36rpx + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18rpx;
+}
+
+.screen-timer {
+  display: flex;
+  align-items: baseline;
+  gap: 14rpx;
+  padding: 12rpx 24rpx;
+  border: 2rpx solid currentColor;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 0.76;
+}
+
+.screen-timer-caption {
+  font-size: 20rpx;
+  letter-spacing: 2rpx;
+}
+
+.screen-timer-value {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  font-size: 38rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+.screen-label {
+  font-size: 112rpx;
+  font-weight: 800;
+  letter-spacing: 14rpx;
+  text-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.12);
+}
+
+.screen-hint {
+  font-size: 23rpx;
+  letter-spacing: 2rpx;
+  opacity: 0.56;
+}

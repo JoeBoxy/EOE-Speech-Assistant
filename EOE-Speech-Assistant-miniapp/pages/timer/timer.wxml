@@ -1,0 +1,63 @@
+<view class="time-card-page">
+  <view class="picker-view" wx:if="{{!selectedColor}}">
+    <view class="custom-nav">
+      <view class="nav-action"></view>
+      <text class="nav-title">时间牌</text>
+      <view class="nav-action"></view>
+    </view>
+
+    <view class="content">
+      <view class="intro">
+        <text class="eyebrow">SPEECH TIMER</text>
+        <text class="page-title">请选择时间牌</text>
+        <text class="page-description">选择后将全屏展示，并自动开始计时</text>
+      </view>
+
+      <view class="timer-panel">
+        <view class="timer-copy">
+          <text class="timer-caption">已计时</text>
+          <text class="timer-value">{{displayTime}}</text>
+        </view>
+        <view class="timer-actions">
+          <view class="timer-button" wx:if="{{isRunning}}" catchtap="onPauseTimer">暂停</view>
+          <view class="timer-button" wx:elif="{{hasStarted}}" catchtap="onResumeTimer">继续</view>
+          <view class="timer-button" wx:else catchtap="onResumeTimer">开始</view>
+          <view class="timer-button timer-button-secondary" catchtap="onResetTimer">归零</view>
+        </view>
+      </view>
+
+      <view class="color-list">
+        <view
+          class="color-card color-card-{{item.id}}"
+          wx:for="{{colorOptions}}"
+          wx:key="id"
+          data-color="{{item.id}}"
+          bindtap="onSelectColor"
+          hover-class="color-card-active"
+          hover-stay-time="80"
+        >
+          <view class="color-dot"></view>
+          <text class="color-label">{{item.label}}</text>
+          <text class="color-arrow">›</text>
+        </view>
+      </view>
+
+      <text class="picker-hint">展示时轻触屏幕，可返回重新选择</text>
+    </view>
+  </view>
+
+  <view
+    class="color-screen color-screen-{{selectedColor}}"
+    wx:else
+    bindtap="onExitDisplay"
+  >
+    <text class="screen-label">{{selectedLabel}}</text>
+    <view class="screen-footer">
+      <view class="screen-timer">
+        <text class="screen-timer-caption">已计时</text>
+        <text class="screen-timer-value">{{displayTime}}</text>
+      </view>
+      <text class="screen-hint">轻触屏幕返回</text>
+    </view>
+  </view>
+</view>

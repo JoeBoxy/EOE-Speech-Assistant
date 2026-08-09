@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "时间牌",
+  "disableScroll": true,
+  "enableShareAppMessage": true,
+  "enableShareTimeline": true
+}
